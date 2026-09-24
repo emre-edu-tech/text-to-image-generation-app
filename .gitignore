@@ -1,0 +1,6 @@
+.env
+__pycache__/
+venv/
+node_modules/
+app/static/generated_images/*
+!app/static/generated_images/.gitkeep
