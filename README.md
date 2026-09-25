@@ -64,3 +64,17 @@ from app import create_app
 
 application = create_app()
 ```
+
+3. Create the .env file and insert the following keys:
+
+```text
+CF_ACCOUNT_ID=
+CF_API_TOKEN=
+APP_USERNAME=
+APP_PASSWORD=
+SECRET_KEY=
+FLASK_ENV=development
+```
+
+Here is how to create SECRET_KEY using command line. First activate the virtual environment and run the following command:
+`python -c "import secrets; print(secrets.token_hex(32))"`
