@@ -49,29 +49,32 @@ artifact. Whenever `input.css` or the Tailwind config changes, re-run
 
 ## File structure
 ```
-├── app/
+app/
+├── __init__.py
+├── config.py
+├── main/
 │   ├── __init__.py
-│   ├── config.py
-│   ├── main/
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── login.html
-│   │   └── index.html
-│   └── static/
-│       ├── src/input.css
-│       ├── dist/output.css      (compiled, committed to git)
-│       ├── js/generate.js
-│       └── generated_images/    (runtime cache, gitignored)
-├── .env.example
-├── .gitignore
-├── requirements.txt
-├── package.json
-├── tailwind.config.js
-├── app.py                       (local dev entry point)
-└── wsgi.py                      (Passenger entry point)
+│   └── routes.py
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   └── index.html
+└── static/
+    ├── src/input.css
+    ├── dist/output.css      (compiled, committed to git)
+    ├── js/generate.js
+    └── generated_images/    (runtime cache, gitignored)
+.env.example
+.gitignore
+requirements.txt
+package.json
+tailwind.config.js
+app.py                       (local dev entry point)
+wsgi.py                      (Passenger entry point)
 ```
+
+This is the project root — the agent works directly inside it, there is
+no wrapping parent folder to create first.
 
 ## Build order (step files)
 1. `01-project-scaffolding.md` — app factory, folder layout, Tailwind
