@@ -32,4 +32,35 @@ pip install -r requirements.txt
 ```
 
 ## Deployment
-1. Disable the nginx ... mode.
+1. In `Domains > Hosting & DNS > Apache & nginx > nginx settings`, disable the Proxy mode.
+
+2. In Additional nginx directives, enter the following:
+
+```text
+passenger_enabled on;
+passenger_app_type wsgi;
+passenger_startup_file wsgi.py;
+passenger_app_root /var/www/vhosts/example.com/httpdocs;
+passenger_python /var/www/vhosts/example.com/httpdocs/venv/bin/python;
+```
+
+2. Here is the content of `wsgi.py` file for ngix and Phusion Passenger:
+
+```python
+import sys
+import os
+
+# Set the project root directory
+project_home = os.path.dirname(__file__)
+sys.path.insert(0, project_home)
+
+# Set Python interpreter to your venv
+INTERP = os.path.join(project_home, "venv", "bin", "python3")
+if sys.executable != INTERP:
+    os.execl(INTERP, INTERP, *sys.argv)
+
+# Import the app factory and create the application instance
+from app import create_app
+
+application = create_app()
+```
