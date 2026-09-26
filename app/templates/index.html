@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}AI Image Generator{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-10">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-xl font-semibold">AI Image Generator</h1>
+    <a href="{{ url_for('main.logout') }}" class="text-sm text-gray-500 hover:underline">Logout</a>
+  </div>
+
+  <form id="generate-form" class="space-y-3">
+    <textarea id="prompt" rows="3" required
+      class="w-full rounded border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+      placeholder="Describe the image you want..."></textarea>
+    <button type="submit"
+      class="bg-indigo-600 text-white rounded px-4 py-2 font-medium hover:bg-indigo-700">
+      Generate
+    </button>
+  </form>
+
+  <div id="loading" class="hidden mt-4 text-gray-500">Generating…</div>
+  <div id="error-box" class="hidden mt-4 text-red-600"></div>
+
+  <div class="mt-6">
+    <img id="result-img" class="hidden max-w-full rounded shadow">
+    <a id="download-link" class="hidden inline-block mt-3 text-indigo-600 hover:underline"
+       download="generated-image.png">
+      Download image
+    </a>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/generate.js') }}"></script>
+{% endblock %}

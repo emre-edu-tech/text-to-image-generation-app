@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AI Image Generator{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
   {% block content %}{% endblock %}
 </body>
 </html>
